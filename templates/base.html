@@ -14,14 +14,35 @@
                 width: 200px;
                 height: 100px;
             }
+            .right {
+                float: right;
+            }
+            .left {
+                float: left;
+            }
         </style>
+    
     </head>
 <body>
 
-    <div>
-        <a href='/blog'>Main Blog Page</a>
-        <a href='/newpost'>Add a Blog Entry</a>
+    <div class="left">
+        <a href='/'>home</a>
+        <a href='/blog'>all posts</a>
+        <a href='/newpost'>new post</a>
     </div>
+    <div class="right">
+        <a href='/login'>login</a>
+        <a href='/logout'>logout</a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+        {% for category,message in messages %}
+        <br>
+            <li class="{{category}}">{{message}}</li>
+        {% endfor %}
+        </ul>
+    {% endwith %}
 
     {% block content %}
     {% endblock %}
