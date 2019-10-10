@@ -155,7 +155,7 @@ def index():
 
 @app.route('/')
 def users():
-    users = Blog.query.all()
+    users = User.query.all()
     return render_template('index.html', users=users)
 
 @app.route('/blogpost/<int:blog_id>')
